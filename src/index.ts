@@ -23,6 +23,7 @@ const port: number = 3000;
  * Se crea la instancia de la clase http.server
  */
 
+//https://nodejs.org/dist/latest-v8.x/docs/api/http.html#http_http_createserver_requestlistener
 const server: http.Server = http.createServer((req,res)=>{
     res.statusCode = 200;
     res.setHeader('Content-Type','text/plain');
@@ -33,12 +34,14 @@ const server: http.Server = http.createServer((req,res)=>{
  * Se pone en marcha el servidor
  */
 
+//https://nodejs.org/dist/latest-v8.x/docs/api/http.html#http_server_listen
 server.listen(port,hostname);
 
 /**
  * Se manejan los eventos en el servidor
  */
 
+//https://nodejs.org/api/events.html#events_emitter_on_eventname_listener
 server.on('error',onError);
 server.on('listening', onListening);
 
@@ -47,7 +50,9 @@ server.on('listening', onListening);
  * Event listener for HTTP server "error" event.
  */
 
+//https://nodejs.org/dist/latest-v8.x/docs/api/errors.html
  function onError(error:any): void{
+    
     if (error.syscall !== 'listen'){
         throw error;
     }
@@ -70,6 +75,7 @@ server.on('listening', onListening);
     }
  }
 
+//https://nodejs.org/dist/latest-v8.x/docs/api/net.html#net_server_address
  function onListening(): void{
      let addr: string | AddressInfo = server.address();
      let bind = typeof addr ==='string'
