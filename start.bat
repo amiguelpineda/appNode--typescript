@@ -1,0 +1,1 @@
+set DEBUG=appNode:* & npm run mystart
